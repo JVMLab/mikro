@@ -35,7 +35,7 @@ class ApplicationTest {
 
 
   @Test
-  fun testGuidPost() = testApplication {
+  fun testGuidPostBase() = testApplication {
     val client = createClient {
       install(ContentNegotiation) {
         json()
@@ -48,5 +48,23 @@ class ApplicationTest {
     assertEquals(HttpStatusCode.OK, response.status)
     val guid = response.body<Guid>()
     guid.assertBase()
+  }
+
+
+  @Test
+  fun testGuidPostFull() = testApplication {
+    val client = createClient {
+      install(ContentNegotiation) {
+        json()
+      }
+    }
+    val params = GuidParams("xx_", "_ttt")
+    val response = client.post("/guid") {
+      contentType(ContentType.Application.Json)
+      setBody(params)
+    }
+    assertEquals(HttpStatusCode.OK, response.status)
+    val guid = response.body<Guid>()
+    guid.assertFull(params)
   }
 }
