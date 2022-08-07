@@ -6,15 +6,13 @@ plugins {
   application
   kotlin("jvm") version "1.7.0"
   kotlin("plugin.serialization").version("1.7.0")
+  id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "com.jvmlab"
 version = "0.0.1"
 application {
   mainClass.set("com.jvmlab.mikro.ApplicationKt")
-
-  val isDevelopment: Boolean = project.ext.has("development")
-  applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
 repositories {
