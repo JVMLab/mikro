@@ -4,9 +4,9 @@ val logback_version: String by project
 
 plugins {
   application
-  kotlin("jvm") version "1.7.0"
-  kotlin("plugin.serialization").version("1.7.0")
-  id("com.github.johnrengelman.shadow") version "7.1.2"
+  kotlin("jvm") version "1.9.23"
+  kotlin("plugin.serialization").version("1.9.23")
+  id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "com.jvmlab"
